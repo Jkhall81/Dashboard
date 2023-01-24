@@ -20,11 +20,38 @@ ChartJS.register(
 );
 
 const BarChart = () => {
-  const [chartData, setChartDate] = useState({
+  const [chartData, setChartData] = useState({
     datasets: [],
   });
 
   const [chartOptions, setChartOptions] = useState({});
+
+  useEffect(() => {
+    setChartData({
+      labels: ["mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
+      datasets: [
+        {
+          label: "Sales $",
+          data: [13227, 22201, 19403, 17938, 24182, 17842, 22475],
+          borderColor: "rgb(53, 162, 235)",
+          backgroundColor: "rgb(53, 162, 235, 0.4",
+        },
+      ],
+    });
+    setChartOptions({
+      plugins: {
+        legend: {
+          position: "top",
+        },
+        title: {
+          display: true,
+          text: "Daily Revenue",
+        },
+      },
+      maintainAspectRatio: false,
+      responsive: true,
+    });
+  }, []);
 
   return (
     <>
